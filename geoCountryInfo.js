@@ -22,36 +22,38 @@ const countries = [
 ];
 
 function getCountryDetails(countryCode) {
-  const country = countries.find(c => c.code === countryCode.toUpperCase());
-  
+  const country = countries.find(c => c.code === countryCode?.toUpperCase());
   if (country) {
     return {
       countryCode: country.code,
       dialCode: country.dialCode
     };
   } else {
-    return null; 
+    return null;
   }
 }
 
+window.geoCountryData = {};
 
-  function fetchGeoInfo() {
-      fetch('https://d2pu3v2r6r77j3.cloudfront.net/geo-info')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json(); 
-        })
-        .then(data => {
-          console.log('Geo Info:', data);
-          if(data){
-          	const countryInfo = getCountryDetails(data.country);
-          	console.log('countryInfo-->', countryInfo);
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching the geo-info:', error);
-        });
-    }
-    window.addEventListener('DOMContentLoaded', fetchGeoInfo);
+function fetchGeoInfo() {
+  fetch('https://d2pu3v2r6r77j3.cloudfront.net/geo-info')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      const countryInfo = getCountryDetails(data.country);
+      window.geoCountryData = {
+        ...data,
+        ...countryInfo
+      };
+      window.dispatchEvent(new Event('geoCountryDataReady'));
+    })
+    .catch(error => {
+      console.error('Error fetching the geo-info:', error);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', fetchGeoInfo);
