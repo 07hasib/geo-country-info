@@ -198,7 +198,7 @@ const countries = [
     ];
 
 function getCountryDetails(countryCode) {
-  const country = countries.find(c => c.code === countryCode?.toUpperCase());
+  const country = countries.find(c => c.code === code?.toUpperCase());
   if (country) {
     return {
       name: country.name
