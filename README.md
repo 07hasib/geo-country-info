@@ -17,10 +17,10 @@ Paste this inside your HTML <body> or <head>:
 <script src="https://cdn.jsdelivr.net/gh/07hasib/geo-country-info/geoCountriesInfo.js"></script>
 This script automatically starts fetching geo data on page load.
 
-2. Create a Placeholder in HTML
+2. Create a HTML H1 with Id geoOutput
 
 ----------HTML-------->
-<pre id="geoOutput"><pre id="geoOutput">Loading...</pre></pre>
+<h1 id="geoOutput">Loading...</h>
 
 3. Listen for the Ready Event
 Once the script finishes fetching and enriching the data, it dispatches a geoCountryDataReady event. Add this code to respond:
