@@ -198,17 +198,17 @@ const countries = [
     ];
 
 function getCountryDetails(countryCode) {
-  const country = countries.find(c => c.code === code?.toUpperCase());
+  const upperCode = countryCode?.toUpperCase();
+  const country = countries.find(c => c.code === upperCode);
   if (country) {
     return {
       name: country.name,
       code: country.code,
       dial: country.dial,
-      currencyIsoCode: country.currencyIsoCode
+      currencyIsoCode: country.currencyIsoCode,
     };
-  } else {
-    return null;
   }
+  return null;
 }
 
 window.geoCountryData = {};
