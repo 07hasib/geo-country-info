@@ -20,7 +20,7 @@ This script automatically starts fetching geo data on page load.
 2. Create a Placeholder in HTML
 
 ----------HTML-------->
-<pre id="geoOutput">Loading...</pre>
+<pre id="geoOutput"><pre id="geoOutput">Loading...</pre></pre>
 
 3. Listen for the Ready Event
 Once the script finishes fetching and enriching the data, it dispatches a geoCountryDataReady event. Add this code to respond:
