@@ -15,7 +15,7 @@ Triggers a browser event geoCountryDataReady once the data is ready.
 Paste this inside your HTML <head> or <body>:
 
 <!-- ---------- CDN ---------- -->
-<script src="https://cdn.delivr.net/gh/07hasib/geo-country-info/fetchCountryGeoInfo.js"></script>
+<script src="https://cdn.delivr.net/gh/07hasib/geo-country-info/fetchUserData.js"></script>
 This script automatically starts fetching geo data on page load.
 
 2. Create a Placeholder in HTML
